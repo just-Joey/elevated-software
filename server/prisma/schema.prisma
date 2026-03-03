@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Client {
+  id            String   @id @default(cuid())
+  slug          String   @unique  // "denver-lawn-co"
+  businessName  String
+  phone         String?
+  serviceArea   String?
+  services      Service[] // Postgres array
+  hours         String?
+  brand         Brand?
+  tools         ClientTool[]
+  leads         Lead[]
+  gallery       GalleryImage[]
+  createdAt     DateTime @default(now())
+}
+
+model Service {
+  id        String  @id @default(cuid())
+  name      String
+  client    Client  @relation(fields: [clientId], references: [id])
+  clientId  String
+}
+
+model Brand {
+  id             String  @id @default(cuid())
+  primaryColor   String
+  secondaryColor String?
+  logoUrl        String?
+  fontFamily     String  @default("Inter")
+  client         Client  @relation(fields: [clientId], references: [id])
+  clientId       String  @unique
+}
+
+model ClientTool {
+  id            String   @id @default(cuid())
+  type          ToolType // enum: CHATBOT, QUOTE_FORM, GALLERY, REVIEW_PROMPT
+  config        Json     // tool-specific settings (system prompt, welcome msg, etc.)
+  enabled       Boolean  @default(true)
+  client        Client   @relation(fields: [clientId], references: [id])
+  clientId      String
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String?
+  address     String?
+  serviceType String?
+  message     String?
+  toolType    ToolType
+  client      Client   @relation(fields: [clientId], references: [id])
+  clientId    String
+  createdAt   DateTime @default(now())
+}
+
+model GalleryImage {
+  id          String   @id @default(cuid())
+  url         String
+  caption     String?
+  serviceType String?
+  client      Client   @relation(fields: [clientId], references: [id])
+  clientId    String
+  createdAt   DateTime @default(now())
+}
+
+enum ToolType {
+  CHATBOT
+  QUOTE_FORM
+  GALLERY
+  REVIEW_PROMPT
+}
