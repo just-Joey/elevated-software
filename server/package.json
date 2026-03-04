@@ -2,16 +2,17 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "dev": "nodemon src/index.js",
-  "migrate": "prisma migrate dev --schema=prisma/schema.prisma",
-  "generate": "prisma generate"
-},
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "migrate": "prisma migrate dev --schema=prisma/schema.prisma",
+    "generate": "prisma generate"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@prisma/client": "^7.4.2",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
