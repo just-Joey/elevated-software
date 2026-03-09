@@ -11,6 +11,8 @@ app.use(express.json())
 
 const chatRoute = require('./routes/chat')
 app.use('/api/chat', chatRoute)
+const contactRoute = require('./routes/contact')
+app.use('/api/contact', contactRoute)
 
 app.get('/', (req, res) => {
   res.json({ message: 'Server is running' })

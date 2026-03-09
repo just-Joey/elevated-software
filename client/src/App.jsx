@@ -4,18 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { useClient } from './context/ClientContext'
 import ChatBotBubble from './components/chatbot/ChatBotBubble'
+import LandingPage from './LandingPage'   
 
 function App() {
-  const client = useClient()
-
-  return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-3xl font-bold">{client.business.name}</h1>
-      <p className="mt-2 text-gray-600">{client.business.serviceArea}</p>
-      <ChatBotBubble />
-
-    </div>
-  )
+  return <LandingPage />
 }
 
 export default App
