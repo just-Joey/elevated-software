@@ -644,12 +644,27 @@ export default function LandingPage() {
 
   const onKey = (e) => { if (e.key === "Enter") sendDemo(); };
   const onForm = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const submitForm = () => setSubmitted(true);
-
+  const submitForm = async () => {
+    console.log("Submitting form:", form);
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", { 
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      console.log('response status:', response.status);
+      const data = await response.json();
+      console.log('response data:', data);
+      if(!response.ok) throw new Error("Failed to submit form");
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Sorry, something went wrong. Please try again later.");
+    }
+  };
   return (
     <div className="ess">
       <nav className={`ess-nav ${scrolled ? "stuck" : ""}`}>
-        <a href="#" className="ess-logo">Elevated Software</a>
+        <a href="#" className="ess-logo">Elevated Software Solutions</a>
         <div className="ess-nav-links">
           <a href="#services" className="ess-nav-link">Services</a>
           <a href="#demo" className="ess-nav-link">See It Work</a>
