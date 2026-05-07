@@ -588,17 +588,17 @@ const SERVICES = [
   {
     icon: "🌐", title: "A Website That Works",
     body: "Your customers Google you before they call. We build fast, clean sites that show up in search results and make your phone ring.",
-    price: "Starting at $500",
+ 
   },
   {
     icon: "💬", title: "Automated Chat Assistant",
     body: "A smart assistant on your site that answers common questions, captures contact info, and books estimates — even at midnight.",
-    price: "Starting at $300",
+   
   },
   {
     icon: "🔧", title: "We Maintain Everything",
     body: "Hosting, updates, fixes — handled. You'll never get a call about your site being down. Just focus on your work, we've got the rest.",
-    price: "From $100/mo",
+    
   },
 ];
 

@@ -6,6 +6,7 @@ import { useClient } from './context/ClientContext'
 import ChatBotBubble from './components/chatbot/ChatBotBubble'
 import LandingPage from './LandingPage'   
 
+
 function App() {
   return <LandingPage />
 }

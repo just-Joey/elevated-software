@@ -3,11 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>client</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="https://cdn.tailwindcss.com?plugins,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#14121e',
+              'primary-container': '#1e1b2e',
+              'secondary': '#8b5cf6',
+              'secondary-container': '#f0edfb',
+              'on-primary': '#ffffff',
+              'surface': '#faf9fe',
+              'on-surface': '#faf9fe',
+              'on-surface-variant': '#5b5478',
+              'outline-variant': '#ddd8f5',
+              'tertiary-fixed': '#f59e0b'
+            },
+            borderRadius: {
+              DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', '2xl': '1rem', '3xl': '1.5rem', full: '9999px'
+            },
+
+          fontFamily: {
+              headline: ['Newsreader', 'serif'],
+              body: ['Manrope', 'sans-serif'],
+              label: ['Manrope', 'sans-serif'],
+            },
+          },
+        },  
+      }
+    </script>
+
   </body>
 </html>
